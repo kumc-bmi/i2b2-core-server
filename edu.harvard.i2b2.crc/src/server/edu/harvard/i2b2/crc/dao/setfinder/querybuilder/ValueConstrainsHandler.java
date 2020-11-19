@@ -128,8 +128,8 @@ public class ValueConstrainsHandler {
 				constraintSql += " valtype_cd = 'B' AND ";
 				// constrainSql = " valtype_cd = 'B' AND " ;
 				if (oracleFlag == true) {
-					constraintSql += " instr(observation_blob,'"
-							+ containsSql + "') ";
+					constraintSql += " regexp_instr(observation_blob,'"
+							+ containsSql + "' ,1 , 1, 0, 'i') ";  // replace instr with regexp_instr for case-insensitive matching
 
 					if (panelAccuracyScale > 0) {
 						constraintSql += " >= " + panelAccuracyScale + " ";
